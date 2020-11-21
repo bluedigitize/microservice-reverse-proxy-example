@@ -1,0 +1,23 @@
+<html>
+<head>
+    <title>Frontend Service</title>
+</head>
+<body>
+<h1>Response from backend<br/>
+    <span style="color: green" id="backend-response"></span>
+</h1>
+
+<!-- request lib -->
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+<!-- backend request -->
+<script lang="javascript">
+  const n = document.getElementById("backend-response");
+  axios.get('http://localhost/backend')
+    .then(response => {
+      n.innerText = response.data.response;
+    })
+    .catch(error => console.error(error));
+</script>
+</body>
+</html>

@@ -1,0 +1,22 @@
+version: '3.5'
+
+services:
+  router-service:
+    build: ./router-service
+    depends_on:
+      - backend-service
+      - frontend-service
+    ports:
+      - 80:80
+
+  backend-service:
+    build: ./backend-service
+    entrypoint: npm run dev
+    volumes:
+      - ./backend-service:/srv/backend-service
+      - /srv/backend-service/node_modules
+
+  frontend-service:
+    build: ./frontend-service
+    volumes:
+      - ./frontend-service:/usr/share/nginx/html
